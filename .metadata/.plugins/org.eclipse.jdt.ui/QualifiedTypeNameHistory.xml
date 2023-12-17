@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="lombok.Getter"/>
+    <fullyQualifiedTypeName name="lombok.Setter"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.Entity"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.Table"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.GenerationType"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.Id"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.GeneratedValue"/>
+    <fullyQualifiedTypeName name="mvc.model.Contato"/>
+    <fullyQualifiedTypeName name="mvc.model.Hotel"/>
+    <fullyQualifiedTypeName name="mvc.model.Reserva_Quarto"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+    <fullyQualifiedTypeName name="org.springframework.web.servlet.ModelAndView"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
+    <fullyQualifiedTypeName name="mvc.repository.AgenciaRepository"/>
+    <fullyQualifiedTypeName name="lombok.NoArgsConstructor"/>
+    <fullyQualifiedTypeName name="org.hibernate.mapping.List"/>
+    <fullyQualifiedTypeName name="mvc.model.Agencia"/>
+    <fullyQualifiedTypeName name="mvc.model.Agencias"/>
+    <fullyQualifiedTypeName name="mvc.model.Cliente"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Controller"/>
+    <fullyQualifiedTypeName name="lombok.AllArgsConstructor"/>
+    <fullyQualifiedTypeName name="lombok.Data"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Repository"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.ModelAttribute"/>
+    <fullyQualifiedTypeName name="mvc.model.Hoteis"/>
+    <fullyQualifiedTypeName name="mvc.model.Voo"/>
+    <fullyQualifiedTypeName name="mvc.model.Voos"/>
+    <fullyQualifiedTypeName name="mvc.repository.PassagensRepository"/>
+    <fullyQualifiedTypeName name="mvc.repository.VooRepository"/>
+    <fullyQualifiedTypeName name="mvc.repository.ClienteRepository"/>
+    <fullyQualifiedTypeName name="mvc.model.Passagens"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.JoinColumn"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.ManyToOne"/>
+</qualifiedTypeNameHistroy>

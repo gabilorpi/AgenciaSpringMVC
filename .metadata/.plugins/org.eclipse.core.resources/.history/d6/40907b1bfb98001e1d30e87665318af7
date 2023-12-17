@@ -1,0 +1,9 @@
+package mvc.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import mvc.model.Hoteis;
+
+public interface HotelRepository extends JpaRepository<Hoteis, Long>{
+
+}

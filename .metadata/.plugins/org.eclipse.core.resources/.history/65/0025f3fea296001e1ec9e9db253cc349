@@ -1,0 +1,9 @@
+package mvc.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import mvc.model.Contatos;
+
+public interface ContatoRepository extends JpaRepository<Contatos, Long>{
+
+}

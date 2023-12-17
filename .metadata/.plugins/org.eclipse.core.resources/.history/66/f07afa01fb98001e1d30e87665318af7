@@ -1,0 +1,41 @@
+package mvc.model;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+@Data
+@AllArgsConstructor
+@Entity
+@Table(name = "hotel")
+
+public class Hoteis {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long idHotel;
+    private double precoPorNoite;
+    private String categorias;
+    private String nomeHotel;
+    private String cep;
+    private String rua;
+    private String bairro;
+    private String telefone;
+    
+ 
+
+	@Override
+	public String toString() {
+		return "Hotel [idHotel=" + idHotel + ", precoPorNoite=" + precoPorNoite + ", categorias=" + categorias
+				+ ", nomeHotel=" + nomeHotel + ", cep=" + cep + ", rua=" + rua + ", bairro=" + bairro + ", telefone="
+				+ telefone + "]";
+	}
+	
+    
+    
+	
+}

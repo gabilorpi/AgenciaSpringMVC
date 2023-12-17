@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+	<title>Buscadores de Aventuras</title>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+
+	<style>
+		nav {
+			margin-bottom: 2px;
+			background-color: #791881;
+		}
+
+		.navbar-brand {
+			width: 70px;
+			height: auto;
+		}
+
+		header,
+		footer {
+			width: 100%;
+			padding: 10px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background: rgba(121, 24, 129, 0.877);
+			color: #ffffff;
+			box-sizing: border-box;
+			position: absolute;
+			bottom: 0;
+		}
+
+		h1 {
+			margin-bottom: 20px;
+			color: #5f46a3e1;
+		}
+
+		.table {
+			position: relative;
+			background-color: #fff;
+			font-family: 'Courier New', Courier, monospace;
+		}
+
+		.table th {
+			background-color: #5f46a3e1;
+			color: #fff;
+			font-family: 'Courier New', Courier, monospace;
+		}
+	</style>
+
+</head>
+
+<body>
+
+	<nav class="navbar navbar-expand-lg navbar-dark">
+		<div class="container">
+			<button class="btn btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+				aria-controls="offcanvasRight">
+				Menu
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav ms-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="home">Home</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="">Passagens</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="./././hotel.html">Hotéis</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="./././contato.html">Contato</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<main class="container" id="main-container">
+		<h1>Lista de Agências</h1>
+		<div class="container">
+			<div class="p-4">
+				<button data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-primary mb-2 botao1"> Nova
+					Agência </button>
+
+				<table class="table table-hover">
+					<thead class="table-dark">
+						<tr>
+							<th scope="col">id</th>
+							<th scope="col">nome</th>
+							<th scope="col">cep</th>
+							<th scope="col">rua</th>
+							<th scope="col">bairro</th>
+							<th scope="col">telefone</th>
+							<th scope="col">Ação</th>
+						</tr>
+					</thead>
+					<tbody>
+
+						<tr th:each="agencia : ${agencias}">
+							<td th:text="${agencia.id_Agencia}"></td>
+							<td th:text="${agencia.nome_Agencia}" class="name"></td>
+							<td th:text="${agencia.cep}"></td>
+							<td th:text="${agencia.rua}"></td>
+							<td th:text="${agencia.bairro}" class="name"></td>
+							<td th:text="${agencia.telefone}"></td>
+
+							<td>
+								<div class="d-flex">
+									
+										<a th:href="@{'/agencia'}" data-bs-toggle="modal"
+											th:data-bs-target="'#exampleModal' + ${agencia.id_Agencia}"
+											class="btn btn-warning" title="Editar">
+											<i class="fas fa-edit"></i>
+										</a>
+
+										<a th:href="@{'/agencia/' + ${agencia.id_Agencia} + '/excluir'}"
+											class="btn btn-danger" title="Cancelar"
+											onclick="return confirm('Deseja excluir a agência?')">
+											<i class="fas fa-trash"></i>
+										</a>
+									</div>
+
+
+									<!-- Modal 	-->
+									<div class="modal fade" th:id="'exampleModal' + ${agencia.id_Agencia}" tabindex="-1"
+										aria-labelledby="exampleModalLabel" aria-hidden="true">
+										<div class="modal-dialog">
+											<div class="modal-content">
+												<div class="modal-header">
+													<h1 class="modal-title fs-5" id="exampleModalLabel">Modal
+														title</h1>
+													<button type="button" class="btn-close" data-bs-dismiss="modal"
+														aria-label="Close"></button>
+												</div>
+												<div class="modal-body">
+													<form th:action="@{/agencia/cadastrar}" method="post"
+														th:object="${agencia}">
+														<h2 class="text-center">Atualizar</h2>
+
+														<input type="hidden" id="id_Agencia" name="id_Agencia"
+															class="form-control" th:value="${agencia.id_Agencia}" />
+														<div class="form-group mb-3">
+															<label for="nome" class="form-label">
+																Nome
+															</label>
+															<input type="text" id="nome" name="nome"
+																class="form-control"
+																th:value="${agencia.nome_Agencia}" />
+														</div>
+
+														<div class="form-group mb-3">
+															<label for="cep" class="form-label">
+																Cep
+															</label>
+															<input type="text" id="cep" name="cep" class="form-control"
+																th:value="${agencia.cep}" />
+														</div>
+														<div class="form-group mb-3">
+															<label for="rua" class="form-label">
+																Rua
+															</label>
+															<input type="text" id="rua" name="rua" class="form-control"
+																th:value="${agencia.rua}" />
+														</div>
+														<div class="form-group mb-3">
+															<label for="bairro" class="form-label">
+																Bairro
+															</label>
+
+															<input type="text" id="bairro" name="bairro"
+																class="form-control" th:value="${agencia.bairro}" />
+														</div>
+
+														<div class="form-group mb-3">
+															<label for="telefone" class="form-label">
+																Telefone
+															</label>
+															<input type="text" id="telefone" name="telefone"
+																class="form-control" th:value="${agencia.telefone}" />
+														</div>
+
+
+
+														<button type="submit" class="btn btn-primary">
+															Enviar
+														</button>
+														<a href="./agencia" class="btn btn-danger"
+															style="margin-left: 10px">
+															Cancelar
+														</a>
+													</form>
+												</div>
+
+											</div>
+										</div>
+
+									</div>
+							</td>
+
+
+						</tr>
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+		
+		
+		
+
+		<!-- Modal -->
+		<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h1 class="modal-title fs-5" id="exampleModalLabel">Modal
+							title</h1>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<form th:action="@{/agencia/cadastrar}" method="post" th:object="${agencia}">
+							<h2 class="text-center">Atualizar</h2>
+							<div class="form-group mb-3">
+								<label for="nome" class="form-label">
+									Nome
+								</label>
+								<input type="text" th:id="nome_Agencia" th:name="nome_Agencia" class="form-control"
+									th:field="*{nome_Agencia}" />
+							</div>
+
+							<div class="form-group mb-3">
+								<label for="cep" class="form-label">
+									Cep
+								</label>
+								<input type="text" th:id="cep" th:name="cep" class="form-control"
+									th:field="*{cep}" />
+							</div>
+							<div class="form-group mb-3">
+								<label for="rua" class="form-label">
+									Rua
+								</label>
+								<input type="text" th:id="rua" th:name="rua" class="form-control"
+									th:field="*{rua}" />
+							</div>
+							
+							
+							<div class="form-group mb-3">
+								<label for="bairro" class="form-label">
+									Bairro
+								</label>
+								<input type="text" th:id="bairro" th:name="bairro" class="form-control"
+									th:field="*{bairro}" />
+							</div>
+							
+							
+							<div class="form-group mb-3">
+								<label for="telefone" class="form-label">
+									Telefone
+								</label>
+								<input type="tel" th:id="telefone" th:name="telefone" class="form-control"
+									th:field="*{telefone}" />
+							</div>
+							
+
+							<button type="submit" class="btn btn-primary">
+								Enviar
+							</button>
+							<a href="./agencia" class="btn btn-danger" style="margin-left: 10px">
+								Cancelar
+							</a>
+						</form>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		
+		
+	</main>
+
+	<!-- ... (código do menu lateral) ... -->
+
+	<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+		<div class="offcanvas-header">
+			<h5 class="offcanvas-title" id="offcanvasRightLabel">Menu</h5>
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+		</div>
+		<div class="offcanvas-body">
+			<ul class="nav flex-column">
+				<li class="nav-item">
+					<a class="nav-link" href="index.html">Home</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="../projeto/passagens.html">Passagens</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="../projeto/hoteis.html">Hotéis</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="../projeto/contato.html">Contato</a>
+				</li>
+
+			</ul>
+		</div>
+	</div>
+
+	<footer class="mt-3">© 2023 - Todos os direitos reservados.</footer>
+	
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

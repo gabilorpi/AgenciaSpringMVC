@@ -1,0 +1,42 @@
+package mvc.model;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+@Data
+@AllArgsConstructor
+@Entity
+@Table(name = "contato")
+
+
+
+
+public class Contatos {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long idContato;
+    private String nome;
+    private String email;
+    private String telefone;
+    private String mensagen;
+   
+    
+
+
+	@Override
+	public String toString() {
+		return "Contato [idContato=" + idContato + ", nome=" + nome + ", email=" + email + ", telefone=" + telefone
+				+ ", mensagen=" + mensagen +  "]";
+	}
+    
+  
+    
+    
+    
+}
